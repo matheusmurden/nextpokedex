@@ -1,0 +1,14 @@
+{
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "printWidth": 120,
+  "bracketSpacing": true,
+  "endOfLine": "lf",
+  "importOrder": ["<THIRD_PARTY_MODULES>", "<TYPES>", "<TYPES>^[./]", "^api/(.*)$", "^router/(.*)$", "^layouts/(.*)$", "^[./]", "^assets/(.*)$"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true,
+  "importOrderMergeDuplicateImports": true
+}
