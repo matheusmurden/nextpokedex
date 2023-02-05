@@ -1,12 +1,10 @@
 import { Suspense } from 'react';
 import { Await, useLoaderData, useNavigate } from 'react-router-dom';
+import { formatDexNumber } from 'utils';
 
-const formatIndexNumber = (number: number) =>
-  Intl.NumberFormat(undefined, {
-    minimumIntegerDigits: 3,
-  }).format(number);
 
-export const RootPage = () => {
+
+export const HomePage = () => {
   const { pokemon } = useLoaderData() as { pokemon: any[] };
 
   const navigate = useNavigate();
@@ -24,13 +22,13 @@ export const RootPage = () => {
                 key={`${index}-${i?.name}`}
               >
                 <p className="flex mt-0 gap-2 align-center place-self-start">
-                  <em>#{formatIndexNumber(index + 1)}</em> <b className="capitalize">{String(i?.name)}</b>
+                  <em>#{formatDexNumber(index + 1)}</em> <b className="capitalize">{String(i?.name)}</b>
                 </p>
                 <img
                   loading="lazy"
                   alt={i?.name}
                   className="w-[80%] mx-auto"
-                  src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${formatIndexNumber(
+                  src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${formatDexNumber(
                     index + 1,
                   )}.png`}
                 />

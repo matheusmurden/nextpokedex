@@ -21,7 +21,8 @@
         "layouts/*": ["layouts/*"],
         "loaders/*": ["loaders/*"],
         "pages/*": ["pages/*"],
-        "router/*": ["router/*"]
+        "router/*": ["router/*"],
+        "utils/*": ["utils/*"]
     },
   },
   "include": ["src"],

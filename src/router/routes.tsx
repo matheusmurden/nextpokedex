@@ -1,17 +1,19 @@
 import { MainLayout } from 'layouts'
-import { RootPage, PokemonPage } from 'pages'
-import { RootLoader, PokemonLoader } from 'loaders'
+import { HomeLoader, PokemonLoader } from 'loaders';
+import { HomePage, PokemonPage } from 'pages';
+
 
 const routes = [
     {
-        id: 'root',
+        id: 'home',
         path: '/',
         element: (
             <MainLayout>
-                <RootPage />
+<HomePage />;
+
             </MainLayout>
         ),
-        loader: RootLoader,
+        loader: HomeLoader,
     },
     {
         id: 'pokemon',
