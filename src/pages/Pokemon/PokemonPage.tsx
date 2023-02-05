@@ -1,4 +1,4 @@
-import { Suspense, FC } from 'react';
+import { Suspense } from 'react';
 import { Await, useLoaderData } from 'react-router-dom';
 
 const formatIndexNumber = (number: number) =>
@@ -6,11 +6,8 @@ const formatIndexNumber = (number: number) =>
     minimumIntegerDigits: 3,
   }).format(number);
 
-export const PokemonPage: FC = () => {
+export const PokemonPage = () => {
   const { pokemon } = useLoaderData() as { pokemon: any };
-
-  console.log(pokemon);
-
   return (
     <Suspense fallback={<p>loading...</p>}>
       <Await resolve={pokemon}>

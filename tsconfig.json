@@ -17,9 +17,10 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
-        "api/*": ["api/*"],
         "assets/*": ["assets/*"],
         "layouts/*": ["layouts/*"],
+        "loaders/*": ["loaders/*"],
+        "pages/*": ["pages/*"],
         "router/*": ["router/*"]
     },
   },

@@ -10,7 +10,7 @@ export const RootPage = () => {
   const { pokemon } = useLoaderData() as { pokemon: any[] };
 
   const navigate = useNavigate();
-  console.log('re-render');
+  
   return (
     <Suspense fallback={<p>loading...</p>}>
       <Await resolve={pokemon}>
