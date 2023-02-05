@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 
 interface MainLayoutProps {
-  children?: ReactNode[];
+  children?: ReactNode | ReactNode[];
 }
 
 export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
