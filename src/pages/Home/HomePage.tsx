@@ -2,13 +2,11 @@ import { Suspense } from 'react';
 import { Await, useLoaderData, useNavigate } from 'react-router-dom';
 import { formatDexNumber } from 'utils';
 
-
-
 export const HomePage = () => {
   const { pokemon } = useLoaderData() as { pokemon: any[] };
 
   const navigate = useNavigate();
-  
+
   return (
     <Suspense fallback={<p>loading...</p>}>
       <Await resolve={pokemon}>
