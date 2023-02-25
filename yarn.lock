@@ -1396,15 +1396,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios-cache-adapter@npm:^2.7.3":
-  version: 2.7.3
-  resolution: "axios-cache-adapter@npm:2.7.3"
+"axios-cache-interceptor@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "axios-cache-interceptor@npm:1.0.1"
   dependencies:
-    cache-control-esm: 1.0.0
-    md5: ^2.2.1
+    cache-parser: ^1.2.4
+    fast-defer: ^1.1.7
+    object-code: ^1.2.4
   peerDependencies:
-    axios: ~0.21.1
-  checksum: ff44bee6a2e0b8ed85e20bcd6db566a228ca94bf1c542538e3e5b901d02f01a16f11f146068f768bc6c212ebf0bd356f304edc81920cf5a3bbc10d3c29702f2d
+    axios: ^1
+  checksum: f004940ee2fd2260237ba0c943acdf03811b9265041d40b57ff49435d2c7bc170902de97c2e7330f229a8dd5babbbef5c5e2ad31541cf36d5b6b5dceef23ec74
   languageName: node
   linkType: hard
 
@@ -1527,10 +1528,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cache-control-esm@npm:1.0.0":
-  version: 1.0.0
-  resolution: "cache-control-esm@npm:1.0.0"
-  checksum: 4f8c8399f2b15ad43c635d14b80aadd9de039f09fa56c4686aca828f82e57c1fc479026db1786dea1ba1026415dab0fe463938be4a6110874d3bf3aa7a60d0f3
+"cache-parser@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "cache-parser@npm:1.2.4"
+  checksum: de9fc4ab7af318109f1e53474e674d43997bc7b8676157e4f28e7dc60fda2f434ee138aa9d9abb9f849c55e73202ee74865afaa4e00298de70c4326510680c19
   languageName: node
   linkType: hard
 
@@ -2690,6 +2691,13 @@ __metadata:
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
   checksum: e21a9d8d84f53493b6aa15efc9cfd53dd5b714a1f23f67fb5dc8f574af80df889b3bce25dc081887c6d25457cce704e636395333abad896ccdec03abaf1f3f9d
+  languageName: node
+  linkType: hard
+
+"fast-defer@npm:^1.1.7":
+  version: 1.1.7
+  resolution: "fast-defer@npm:1.1.7"
+  checksum: c0f816fe3f83ca7e12c56a6631c6819a50349fb7e1931cec88e883168b523c65605e6e0df32c8fba6c341860c29ecc6fe2531ba8a418d27d31da6544ad1bf45b
   languageName: node
   linkType: hard
 
@@ -3984,7 +3992,7 @@ __metadata:
     eslint-plugin-react: ^7.32.2
     eslint-plugin-react-hooks: ^4.6.0
     framer-motion: ^10.0.0
-    pokenode-ts: ^1.17.0
+    pokenode-ts: "https://github.com/matheusmurden/pokenode-ts"
     postcss: ^8.4.21
     prettier: ^2.8.4
     react: ^18.2.0
@@ -4079,6 +4087,13 @@ __metadata:
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
   checksum: fcc6e4ea8c7fe48abfbb552578b1c53e0d194086e2e6bbbf59e0a536381a292f39943c6e9628af05b5528aa5e3318bb30d6b2e53cadaf5b8fe9e12c4b69af23f
+  languageName: node
+  linkType: hard
+
+"object-code@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "object-code@npm:1.2.4"
+  checksum: b5dd65c81793705c996cacaea4009287d88629add24e70f8a610d58747fea6d19196e43bf32e134aab582dc1f3ba4867cbacaf84e1d194b70126cd33689c8d5b
   languageName: node
   linkType: hard
 
@@ -4314,7 +4329,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino-pretty@npm:^9.1.0":
+"pino-pretty@npm:^9.4.0":
   version: 9.4.0
   resolution: "pino-pretty@npm:9.4.0"
   dependencies:
@@ -4345,7 +4360,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.4.2":
+"pino@npm:^8.11.0":
   version: 8.11.0
   resolution: "pino@npm:8.11.0"
   dependencies:
@@ -4366,16 +4381,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pokenode-ts@npm:^1.17.0":
+"pokenode-ts@https://github.com/matheusmurden/pokenode-ts":
   version: 1.17.0
-  resolution: "pokenode-ts@npm:1.17.0"
+  resolution: "pokenode-ts@https://github.com/matheusmurden/pokenode-ts.git#commit=1920bef3119aac523469acf41696d5f650cbe8ab"
   dependencies:
-    axios: ^0.27.2
-    axios-cache-adapter: ^2.7.3
-    pino: ^8.4.2
-    pino-pretty: ^9.1.0
-    tslib: ^2.4.0
-  checksum: d03acc3a17ff8bd2dd274aa5b5ee1be878f7fe7134c08409b0fb812d85989e5841a04f05f87dea5b27b14bc996f11b1a5f538a089232bccc0124603075d1523b
+    axios: ^1.3.4
+    axios-cache-interceptor: ^1.0.1
+    pino: ^8.11.0
+    pino-pretty: ^9.4.0
+  checksum: 57faf8cfa394804b472179f6f48e9b967c0be0a5e65e704e1bdc0334fe70d054d94adf2c04ea44c2ece3331f1b8fbb1353a94cfb41d0eaea5956b1cbe08408e1
   languageName: node
   linkType: hard
 

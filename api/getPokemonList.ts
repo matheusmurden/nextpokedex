@@ -9,7 +9,9 @@ const getPokemonList = (_req: VercelRequest, res: VercelResponse) => {
     .then((response) => {
       return api.listPokemons(0, response?.count);
     })
-    .then((data) => res.status(200).json(data));
+    .then((data) => {
+      return res.status(200).json(data);
+    })
 };
 
 export default getPokemonList;
