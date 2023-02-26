@@ -1,40 +1,18 @@
 import axios from 'axios'
+import { Pokemon, PokemonSpecies } from 'pokenode-ts';
 import { LoaderFunctionArgs } from 'react-router-dom'
 import { getIdFromURL } from 'utils';
 
-const recursiveGetEvolutionsId = (chain: any): any[] => {
-  const finalChain = chain?.evolves_to?.map((pkmn: any) => {
-    return {
-      name: pkmn?.species?.name,
-      id: getIdFromURL(pkmn?.species?.url),
-      evolutions: recursiveGetEvolutionsId(pkmn),
-    };
-  });
+export interface PokemonLoaderDTO {
+  pokemon: Pokemon,
+  species: PokemonSpecies
+}
 
-  finalChain.forEach((i: any) => finalChain.push(i?.evolutions));
+export const PokemonLoader = async ({ params }: LoaderFunctionArgs): Promise<PokemonLoaderDTO> => {
 
-  return finalChain?.flat();
-};
+    const pokemon = await axios.get('/api/getPokemonById', { params })?.then(({ data }) => data) as Pokemon;
 
+    const species = await axios.get('/api/getSpeciesById', { params: { id: getIdFromURL(pokemon?.species?.url) } })?.then(({ data }) => data) as PokemonSpecies;
 
-export const PokemonLoader = async ({ params }: LoaderFunctionArgs) => {
-
-    const initialPkmn = await axios.get('/api/getPokemonById', { params })?.then(({ data }) => data);
-
-    const species = await axios.get('/api/getSpeciesById', { params: { id: getIdFromURL(initialPkmn?.species?.url) } })?.then(({ data }) => data);
-
-    const evolutionChain = await axios.get('/api/getEvolutionChainById', { params: { id: getIdFromURL(species?.evolution_chain?.url) } })?.then(({ data }) => data);
-
-    let evolutions = recursiveGetEvolutionsId(evolutionChain?.chain)
-
-    if(species?.evolves_from_species) {
-        evolutions?.push({
-            name: species?.evolves_from_species?.name,
-            id: getIdFromURL(species?.evolves_from_species?.url)
-        })
-    }
-
-    evolutions = evolutions?.sort((a, b) => (Number(a?.id) < Number(b?.id) ? -1 : 1));
-
-    return ({ pokemon: { ...initialPkmn, ...species, ...evolutionChain, evolutions } })
+    return ({ pokemon, species }) as PokemonLoaderDTO
 }

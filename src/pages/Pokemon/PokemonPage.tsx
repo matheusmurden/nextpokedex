@@ -1,38 +1,43 @@
-import { Suspense } from 'react';
-import { Await, useLoaderData } from 'react-router-dom';
-import { formatDexNumber } from 'utils';
-
-
-
+import { PokemonArtwork, PokemonNameList, PokemonDexNumberList, PokemonTypesList, PokemonClassificationList, PokemonHeight, PokemonWeight, PokemonGenderRatio } from 'components';
+import { PokemonLoaderDTO } from 'loaders/Pokemon';
+import { Suspense, useMemo } from 'react';
+import { Await, useLoaderData, useParams } from 'react-router-dom';
 
 export const PokemonPage = () => {
-  const { pokemon } = useLoaderData() as { pokemon: any };
-console.log(pokemon);
+  const { pokemon, species } = useLoaderData() as PokemonLoaderDTO;
+
+  const { id } = useParams();
+
+  const pokemonId = useMemo(() => Number(id), [id])
+
+  console.log(
+    {
+      pokemon,
+      species
+    }
+  )
 
   return (
     <Suspense fallback={<p>loading...</p>}>
       <Await resolve={pokemon}>
         <div className='container mx-auto'>
-          <header className="flex flex-col items-center">
-          <img
-            style={{
-              height: `${pokemon?.height * 30}px`
-            }}
-            className="aspect-square"
-            loading="eager"
-            alt={pokemon.name}
-            src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${formatDexNumber(
-              pokemon.order,
-            )}.png`}
-            srcSet={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/imagesHQ/${formatDexNumber(
-              pokemon.order,
-            )}.png 2x`}
-          />
-          <div className="flex items-center gap-4 mt-6">
-            <p className="text-2xl">#{formatDexNumber(pokemon.order)}</p>
-            <h1 className="text-5xl font-bold capitalize">{pokemon.name}</h1>
-          </div>
-          </header>
+          <section className="grid grid-cols-4 items-start gap-8">
+            <div className='row-span-2'>
+              <h4 className="text-lg font-bold">Picture</h4>
+              <PokemonArtwork
+                pokemon={pokemon}
+                order={pokemonId}
+                height='auto'
+              />
+            </div>
+            <PokemonNameList names={species?.names} />
+            <PokemonDexNumberList dexEntries={species?.pokedex_numbers} />
+            <PokemonTypesList types={pokemon?.types} />
+            <PokemonClassificationList genera={species?.genera} />
+            <PokemonHeight height={pokemon?.height} />
+            <PokemonWeight weight={pokemon?.weight} />
+            <PokemonGenderRatio ratio={species?.gender_rate} />
+          </section>
         </div>
       </Await>
     </Suspense>

@@ -2,7 +2,6 @@ import { MainLayout } from 'layouts'
 import { HomeLoader, PokemonLoader } from 'loaders';
 import { HomePage, PokemonPage } from 'pages';
 
-
 const routes = [
     {
         id: 'home',

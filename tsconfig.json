@@ -22,7 +22,8 @@
         "loaders/*": ["loaders/*"],
         "pages/*": ["pages/*"],
         "router/*": ["router/*"],
-        "utils/*": ["utils/*"]
+        "utils/*": ["utils/*"],
+        "types/*": ["types/*"]
     },
   },
   "include": ["src"],
